@@ -6,17 +6,20 @@ pyinstaller --onefile list2.py
 
 import subprocess
 subprocess.call('', shell=True)
-import sys
+from sys import stdout
 from time import sleep
 
 def addpessoa(nome, idade):
     pessoas.append(list((nome, idade)))
 
-def escreve(texto, time = .1):
+def escreve(texto, time = .08):
     for i in texto:
-            sys.stdout.write(i)
-            sys.stdout.flush()
-            sleep(time)
+        systemout(time, i)
+
+def systemout(time, i):
+    stdout.write(i)
+    stdout.flush()
+    sleep(time)
 
 pessoas = list()
 
@@ -24,7 +27,7 @@ addpessoa("Teci", 52)
 addpessoa("Laura", 41)
 addpessoa("João Pedro", 11)
 addpessoa("Sarah", 6)
-addpessoa("João, pai dos meus irmãos,", "?")
+addpessoa("João, pai dos meus irmãos,", 46)
 addpessoa("Duda", 18)
 addpessoa("Sávio", 21)
 addpessoa("Matheus, meu tio,", 26)
@@ -86,8 +89,8 @@ for text in type:
         escreve(text, .2)
     else:
         for word in text:
-            sys.stdout.write(word)
-            sys.stdout.flush()
+            stdout.write(word)
+            stdout.flush()
             if word in '.!':
                 sleep(.7)
             elif word == ',':
@@ -101,3 +104,4 @@ sleep(1)
 print("")
 sleep(1)
 escreve("\033[0mFIM", .5)
+sleep(1)
