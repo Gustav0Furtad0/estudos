@@ -1,6 +1,3 @@
-from operator import indexOf
-
-
 numeros = []
 
 while True:
